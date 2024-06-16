@@ -4,9 +4,7 @@ const SelectCategoryDropdown = ({selectedCategories,handleChange,CategoriesName}
   const [dropDown ,setDropDown] = useState(false)
   const toggleDropdown = () => setDropDown(prev => !prev)
   const [hovered,setHovered] = useState(null)
- 
-  
-    const Ancestors = (data, targetId, ancestors = []) => {
+     const Ancestors = (data, targetId, ancestors = []) => {
       for (let key in data) {
         const item = data[key];
         if (item?.categoryId === targetId) {
@@ -40,7 +38,7 @@ const SelectCategoryDropdown = ({selectedCategories,handleChange,CategoriesName}
         const ancestors = Ancestors(CategoriesName?.[0]?.relationships, item?.categoryId);
         const descendants = Descendants(item);
         const allItems = [...ancestors, item, ...descendants];
-        onSelect(allItems);
+        onSelect(item,allItems);
       };
   
       return (
